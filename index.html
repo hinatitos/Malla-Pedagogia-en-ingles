@@ -1,375 +1,250 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malla Curricular Pedagogía en Inglés</title>
-  <!-- Fuentes de Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sour+Gummy&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #444;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #F19FB9;
-      font-family: 'Sour Gummy', cursive;
-    }
-    .malla {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding-bottom: 20px;
-    }
-    .semestre {
-      background-color: #F6DCE9;
-      border-radius: 10px;
-      padding: 15px;
-      min-width: 250px;
-      flex-shrink: 0;
-    }
-    .semestre h2 {
-      font-size: 1.2em;
-      color: #F19FB9;
-      margin-bottom: 10px;
-      font-family: 'Sour Gummy', cursive;
-    }
-    .ramo {
-      background-color: #EDCFD3;
-      margin: 5px 0;
-      padding: 8px;
-      border-radius: 8px;
-      cursor: pointer;
-      position: relative;
-      font-family: 'Poppins', sans-serif;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-    .ramo.aprobado {
-      background-color: #F19FB9;
-      color: white;
-      text-decoration: none;
-    }
-    .ramo.bloqueado {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-    .tooltip {
-      visibility: hidden;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      padding: 5px;
-      border-radius: 4px;
-      position: absolute;
-      z-index: 1;
-      top: -5px;
-      left: 105%;
-      width: 150px;
-      font-size: 0.8em;
-    }
-    .ramo:hover .tooltip {
-      visibility: visible;
-    }
-    .decoracion {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .decoracion img {
-      max-width: 100px;
-      margin: 8px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pedagogía en Inglés para Educación Básica y Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sour+Gummy&family=Leckerli+One&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #444;
+    margin: 0;
+    padding: 20px;
+    cursor: url('https://www.rw-designer.com/cursor-view/66718.png'), auto;
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    user-select: none;
+  }
+  header h1 {
+    color: #F19FB9;
+    font-family: 'Leckerli One', cursive;
+    font-size: 3em;
+    margin: 0;
+    white-space: nowrap;
+  }
+  header .logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    background-image: url('https://64.media.tumblr.com/312a01395906a7b2b4c4a0391b4918fb/1f21e226dcf10687-e6/s1280x1920/7f4470581d4b0001178c7858f96ed7418a5fcbcd.pnj');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .malla {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+  .semestre {
+    background-color: #FDECF4;
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 280px;
+    flex-shrink: 0;
+  }
+  .semestre h2 {
+    font-size: 1.8em;
+    color: #F19FB9;
+    margin-bottom: 10px;
+    font-family: 'Sour Gummy', cursive;
+    user-select: none;
+  }
+  .ramo {
+    background-color: #ffffff;
+    margin: 7px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    user-select: none;
+    color: #444;
+    border: 2px solid #F6DCE9;
+  }
+  .ramo.aprobado {
+    background-color: #FFC2D1;
+    color: #222;
+    border: none;
+  }
+  .ramo.bloqueado {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .tooltip {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 180px;
+    font-size: 0.85em;
+    user-select: none;
+  }
+  .ramo:hover .tooltip {
+    visibility: visible;
+  }
+</style>
 </head>
 <body>
+<header>
+  <div class="logo" id="logo" title="Logo Universidad"></div>
   <h1>Malla Curricular Pedagogía en Inglés</h1>
-  <div class="malla" id="malla">
-  <div class="footer">The roots of education are bitter, but the fruit is sweet. </div>
-  <script>
-    const malla = [
-      {
-        nombre: "Primer Semestre",
-        ramos: [
-          { nombre: "Política Educativa" },
-          { nombre: "Fundamentos sociológicos de la educación" },
-          { nombre: "Introducción a la fonética" },
-          { nombre: "Alfabetización Académica en Español (AFI)" },
-          { nombre: "Estudios Culturales I" },
-          { nombre: "Habilidades Comunicativas en Inglés I" },
-          { nombre: "Expresión Teatral y Artística para el Inglés (AFI)" }
-        ]
-      },
-      {
-        nombre: "Segundo Semestre",
-        ramos: [
-          {
-            nombre: "Práctica de intervención I",
-            requiere: ["Política Educativa", "Fundamentos sociológicos de la educación", "Habilidades Comunicativas en Inglés I"],
-            permiteUnoPendiente: true
-          },
-          { nombre: "Currículum" },
-          { nombre: "Psicología para el Aprendizaje" },
-          { nombre: "Lingüística General I" },
-          {
-            nombre: "Habilidades Comunicativas en Inglés II",
-            requiere: ["Habilidades Comunicativas en Inglés I"]
-          },
-          {
-            nombre: "Estudios Culturales II",
-            requiere: ["Estudios Culturales I"]
-          },
-          { nombre: "Fundamentos de la Enseñanza del Idioma Inglés" }
-        ]
-      },
-      {
-        nombre: "Tercer Semestre",
-        ramos: [
-          { nombre: "Investigación Educativa" },
-          { nombre: "Estrategias Metodológicas y Evaluativas I en Educación Básica" },
-          {
-            nombre: "Habilidades Comunicativas en Inglés III (A2)",
-            requiere: ["Habilidades Comunicativas en Inglés II"]
-          },
-          {
-            nombre: "Fonética y Fonología",
-            requiere: ["Introducción a la fonética"]
-          },
-          {
-            nombre: "Psicología para el Aprendizaje del Inglés",
-            requiere: ["Psicología para el Aprendizaje"]
-          },
-          { nombre: "Electivo Formación Integral (EFI)" }
-        ]
-      },
-      {
-        nombre: "Cuarto Semestre",
-        ramos: [
-          {
-            nombre: "Práctica de Intervención II",
-            requiere: ["Práctica de intervención I"]
-          },
-          { nombre: "Educación para la Democracia" },
-          {
-            nombre: "Estrategias Metodológicas y evaluativas II en educación media",
-            requiere: ["Estrategias Metodológicas y Evaluativas I en Educación Básica"]
-          },
-          { nombre: "Literatura Inglesa Infantil" },
-          {
-            nombre: "Lingüística General II",
-            requiere: ["Lingüística General I"]
-          },
-          {
-            nombre: "Habilidades Comunicativas en inglés IV",
-            requiere: ["Habilidades Comunicativas en Inglés III (A2)"]
-          }
-        ]
-      },
-      {
-        nombre: "Quinto Semestre",
-        ramos: [
-          { nombre: "Integración Curricular de TIC" },
-          { nombre: "Taller de Orientación" },
-          {
-            nombre: "Estrategias Metodológicas y evaluativas III",
-            requiere: ["Estrategias Metodológicas y evaluativas II en educación media"]
-          },
-          {
-            nombre: "Evaluación de Desarrollo de Competencias (HITO I)",
-            requiere: [
-              "Política Educativa",
-              "Fundamentos sociológicos de la educación",
-              "Práctica de intervención I",
-              "Currículum",
-              "Psicología para el Aprendizaje",
-              "Investigación Educativa",
-              "Estrategias Metodológicas y Evaluativas I en Educación Básica",
-              "Práctica de Intervención II",
-              "Estrategias Metodológicas y evaluativas II en educación media"
-            ]
-          },
-          {
-            nombre: "Literatura inglesa juvenil",
-            requiere: ["Literatura Inglesa Infantil"]
-          },
-          {
-            nombre: "Habilidades Comunicativas en inglés V (B1)",
-            requiere: ["Habilidades Comunicativas en inglés IV"]
-          },
-          { nombre: "Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica" }
-        ]
-      },
-      {
-        nombre: "Sexto Semestre",
-        ramos: [
-          {
-            nombre: "Práctica de intervención III en Educación básica",
-            requiere: ["Práctica de Intervención II"]
-          },
-          {
-            nombre: "Habilidades Comunicativas en inglés VI",
-            requiere: ["Habilidades Comunicativas en inglés V (B1)"]
-          },
-          {
-            nombre: "Gramática comparada",
-            requiere: ["Lingüística General II"]
-          },
-          { nombre: "Didáctica para la enseñanza del inglés en Educación Básica" },
-          { nombre: "Electivo de Formación Integral (EFI)" }
-        ]
-      },
-      {
-        nombre: "Séptimo Semestre",
-        ramos: [
-          {
-            nombre: "Implementación de Estrategias Didácticas y de evaluación II en Educación Media",
-            requiere: ["Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica"]
-          },
-          { nombre: "Seminario de Profundización I" },
-          { nombre: "Seminario de Profundización II" },
-          {
-            nombre: "Habilidades Comunicativas en inglés VII (B2)",
-            requiere: ["Habilidades Comunicativas en inglés VI"]
-          },
-          { nombre: "Inglés Académico" },
-          {
-            nombre: "Didáctica para la Enseñanza del inglés en Educación Media",
-            requiere: ["Didáctica para la enseñanza del inglés en Educación Básica"]
-          },
-          {
-            nombre: "Lingüística Aplicada a la Enseñanza del Idioma Inglés",
-            requiere: ["Gramática comparada"]
-          }
-        ]
-      },
-      {
-        nombre: "Octavo Semestre",
-        ramos: [
-          {
-            nombre: "Práctica de Intervención IV en Educación Media",
-            requiere: ["Práctica de intervención III en Educación básica"]
-          },
-          {
-            nombre: "Implementación de Estrategias Didácticas y de Evaluación III",
-            requiere: ["Implementación de Estrategias Didácticas y de evaluación II en Educación Media"]
-          },
-          {
-            nombre: "Habilidades Comunicativas en inglés VIII",
-            requiere: ["Habilidades Comunicativas en inglés VII (B2)"]
-          },
-          {
-            nombre: "Evaluación de Desarrollo de Competencias (HITO II)",
-            requiere: [
-              "Educación para la Democracia",
-              "Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica",
-              "Práctica de intervención III en Educación básica",
-              "Implementación de Estrategias Didácticas y de evaluación II en Educación Media"
-            ]
-          }
-        ]
-      },
-      {
-        nombre: "Noveno Semestre",
-        ramos: [
-          {
-            nombre: "Práctica Profesional en Educación Básica",
-            requiere: ["Evaluación de Desarrollo de Competencias (HITO II)"]
-          },
-          {
-            nombre: "Habilidades Comunicativas en Inglés IX (C1)",
-            requiere: ["Habilidades Comunicativas en inglés VIII"]
-          }
-        ]
-      },
-      {
-        nombre: "Décimo Semestre",
-        ramos: [
-          {
-            nombre: "Práctica profesional en Educación Media",
-            requiere: ["Práctica Profesional en Educación Básica"]
-          },
-          {
-            nombre: "Tesina",
-            requiere: ["Práctica Profesional en Educación Básica"]
-          }
-        ]
+</header>
+<div class="malla" id="malla"></div>
+<script>
+const datos = [
+  { nombre: "1er Semestre", ramos: [
+    "Política Educativa",
+    "Fundamentos sociológicos de la educación",
+    "Introducción a la fonética",
+    "Alfabetización Académica en Español (AFI)",
+    "Estudios Culturales I",
+    "Habilidades Comunicativas en Inglés I",
+    "Expresión Teatral y Artística para el Inglés (AFI)"
+  ]},
+  { nombre: "2do Semestre", ramos: [
+    { nombre: "Práctica de intervención I", requisitos: ["Política Educativa", "Fundamentos sociológicos de la educación", "Habilidades Comunicativas en Inglés I"], flex: true },
+    "Currículum",
+    "Psicología para el Aprendizaje",
+    "Lingüística General I",
+    { nombre: "Habilidades Comunicativas en Inglés II", requisitos: ["Habilidades Comunicativas en Inglés I"] },
+    { nombre: "Estudios Culturales II", requisitos: ["Estudios Culturales I"] },
+    "Fundamentos de la Enseñanza del Idioma Inglés"
+  ]},
+  { nombre: "3er Semestre", ramos: [
+    "Investigación Educativa",
+    "Estrategias Metodológicas y Evaluativas I en Educación Básica",
+    { nombre: "Habilidades Comunicativas en Inglés III (A2)", requisitos: ["Habilidades Comunicativas en Inglés II"] },
+    { nombre: "Fonética y Fonología", requisitos: ["Introducción a la fonética"] },
+    { nombre: "Psicología para el Aprendizaje del Inglés", requisitos: ["Psicología para el Aprendizaje"] },
+    "Electivo Formación Integral (EFI)"
+  ]},
+  { nombre: "4to Semestre", ramos: [
+    { nombre: "Práctica de Intervención II", requisitos: ["Práctica de intervención I"] },
+    "Educación para la Democracia",
+    { nombre: "Estrategias Metodológicas y evaluativas II en educación media", requisitos: ["Estrategias Metodológicas y Evaluativas I en Educación Básica"] },
+    "Literatura Inglesa Infantil",
+    { nombre: "Lingüística General II", requisitos: ["Lingüística General I"] },
+    { nombre: "Habilidades Comunicativas en inglés IV", requisitos: ["Habilidades Comunicativas en Inglés III (A2)"] }
+  ]},
+  { nombre: "5to Semestre", ramos: [
+    "Integración Curricular de TIC",
+    "Taller de Orientación",
+    { nombre: "Estrategias Metodológicas y evaluativas III", requisitos: ["Estrategias Metodológicas y evaluativas II en educación media"] },
+    { nombre: "Evaluación de Desarrollo de Competencias (HITO I)", requisitos: [
+      "Política Educativa", "Fundamentos sociológicos de la educación", "Práctica de intervención I", "Currículum", "Psicología para el Aprendizaje",
+      "Investigación Educativa", "Estrategias Metodológicas y Evaluativas I en Educación Básica", "Práctica de Intervención II", "Estrategias Metodológicas y evaluativas II en educación media"] },
+    { nombre: "Literatura inglesa juvenil", requisitos: ["Literatura Inglesa Infantil"] },
+    { nombre: "Habilidades Comunicativas en inglés V (B1)", requisitos: ["Habilidades Comunicativas en inglés IV"] },
+    "Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica"
+  ]},
+  { nombre: "6to Semestre", ramos: [
+    { nombre: "Práctica de intervención III en Educación básica", requisitos: ["Práctica de Intervención II"] },
+    { nombre: "Habilidades Comunicativas en inglés VI", requisitos: ["Habilidades Comunicativas en inglés V (B1)"] },
+    { nombre: "Gramática comparada", requisitos: ["Lingüística General II"] },
+    "Didáctica para la enseñanza del inglés en Educación Básica",
+    "Electivo de Formación Integral (EFI)"
+  ]},
+  { nombre: "7mo Semestre", ramos: [
+    { nombre: "Implementación de Estrategias Didácticas y de evaluación II en Educación Media", requisitos: ["Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica"] },
+    "Seminario de Profundización I",
+    "Seminario de Profundización II",
+    { nombre: "Habilidades Comunicativas en inglés VII (B2)", requisitos: ["Habilidades Comunicativas en inglés VI"] },
+    "Inglés Académico",
+    { nombre: "Didáctica para la Enseñanza del inglés en Educación Media", requisitos: ["Didáctica para la enseñanza del inglés en Educación Básica"] },
+    { nombre: "Lingüística Aplicada a la Enseñanza del Idioma Inglés", requisitos: ["Gramática comparada"] }
+  ]},
+  { nombre: "8vo Semestre", ramos: [
+    { nombre: "Práctica de Intervención IV en Educación Media", requisitos: ["Práctica de intervención III en Educación básica"] },
+    { nombre: "Implementación de Estrategias Didácticas y de Evaluación III", requisitos: ["Implementación de Estrategias Didácticas y de evaluación II en Educación Media"] },
+    { nombre: "Habilidades Comunicativas en inglés VIII", requisitos: ["Habilidades Comunicativas en inglés VII (B2)"] },
+    { nombre: "Evaluación de Desarrollo de Competencias (HITO II)", requisitos: [
+      "Educación para la Democracia", "Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica", "Práctica de intervención III en Educación básica", "Implementación de Estrategias Didácticas y de evaluación II en Educación Media"] }
+  ]},
+  { nombre: "9no Semestre", ramos: [
+    { nombre: "Práctica Profesional en Educación Básica", requisitos: ["Evaluación de Desarrollo de Competencias (HITO II)"] },
+    { nombre: "Habilidades Comunicativas en Inglés IX (C1)", requisitos: ["Habilidades Comunicativas en inglés VIII"] }
+  ]},
+  { nombre: "10mo Semestre", ramos: [
+    { nombre: "Práctica profesional en Educación Media", requisitos: ["Práctica Profesional en Educación Básica"] },
+    { nombre: "Tesina", requisitos: ["Práctica Profesional en Educación Básica"] }
+  ]}
+];
+
+const estado = JSON.parse(localStorage.getItem("malla_estado") || "{}");
+
+function crearMalla() {
+  const contenedor = document.getElementById("malla");
+  contenedor.innerHTML = "";
+  datos.forEach((semestre) => {
+    const columna = document.createElement("div");
+    columna.className = "semestre";
+    const titulo = document.createElement("h2");
+    titulo.textContent = semestre.nombre;
+    columna.appendChild(titulo);
+
+    semestre.ramos.forEach((ramo) => {
+      let nombre, requisitos = [], flex = false;
+      if (typeof ramo === "string") {
+        nombre = ramo;
+      } else {
+        nombre = ramo.nombre;
+        requisitos = ramo.requisitos || [];
+        flex = ramo.flex || false;
       }
-    ];
 
-    const estado = JSON.parse(localStorage.getItem("mallaEstado") || '{}');
+      const div = document.createElement("div");
+      div.className = "ramo";
+      div.textContent = nombre;
 
-    function guardarEstado() {
-      localStorage.setItem("mallaEstado", JSON.stringify(estado));
-    }
+      const tooltip = document.createElement("div");
+      tooltip.className = "tooltip";
+      div.appendChild(tooltip);
 
-    function resetProgress() {
-      localStorage.removeItem("mallaEstado");
-      location.reload();
-    }
+      if (estado[nombre]) {
+        div.classList.add("aprobado");
+      } else {
+        const cumplidos = requisitos.filter(r => estado[r]);
+        const faltan = requisitos.filter(r => !estado[r]);
+        const requisitoCumplido = flex ? (cumplidos.length >= requisitos.length - 1) : (faltan.length === 0);
 
-    function renderMalla() {
-      const container = document.getElementById("malla");
-      container.innerHTML = "";
-      malla.forEach((semestre, idx) => {
-        const col = document.createElement("div");
-        col.className = "semester";
-        col.innerHTML = `<h2>${semestre.nombre}</h2>`;
+        if (!requisitoCumplido) {
+          div.classList.add("bloqueado");
+          tooltip.textContent = "Requiere: " + requisitos.join(", ");
+        }
+      }
 
-        semestre.ramos.forEach((ramo) => {
-          const div = document.createElement("div");
-          div.className = "course";
-          div.textContent = ramo.nombre;
-          div.dataset.key = ramo.nombre;
-
-          const aprobado = estado[ramo.nombre];
-          const requisitos = ramo.requiere || [];
-          const maxUnoPendiente = ramo.permiteUnoPendiente;
-
-          let puedeAprobar = true;
-          let requisitosFaltantes = [];
-
-          if (requisitos.length > 0) {
-            const aprobados = requisitos.filter((r) => estado[r]);
-            const pendientes = requisitos.filter((r) => !estado[r]);
-            if (maxUnoPendiente) {
-              puedeAprobar = pendientes.length <= 1;
-              if (!puedeAprobar) requisitosFaltantes = pendientes;
-            } else {
-              puedeAprobar = pendientes.length === 0;
-              requisitosFaltantes = pendientes;
-            }
-          }
-
-          if (aprobado) {
-            div.classList.add("approved");
-          } else if (!puedeAprobar) {
-            div.classList.add("locked");
-            const tooltip = document.createElement("div");
-            tooltip.className = "tooltip";
-            tooltip.textContent =
-              "Falta aprobar:\n" + requisitosFaltantes.join("\n");
-            div.appendChild(tooltip);
-          }
-
-          div.addEventListener("click", () => {
-            if (div.classList.contains("locked")) return;
-            div.classList.toggle("approved");
-            estado[ramo.nombre] = div.classList.contains("approved");
-            guardarEstado();
-            renderMalla();
-          });
-
-          col.appendChild(div);
-        });
-
-        container.appendChild(col);
+      div.addEventListener("click", () => {
+        div.classList.toggle("aprobado");
+        estado[nombre] = div.classList.contains("aprobado");
+        localStorage.setItem("malla_estado", JSON.stringify(estado));
+        location.reload();
       });
-    }
 
-    renderMalla();
-  </script>
+      columna.appendChild(div);
+    });
+
+    contenedor.appendChild(columna);
+  });
+}
+
+crearMalla();
+</script>
 </body>
 </html>
