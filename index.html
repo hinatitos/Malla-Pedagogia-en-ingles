@@ -6,69 +6,72 @@
   <title>Malla Curricular - Pedagogía en Inglés</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff0f5;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
       margin: 0;
       padding: 20px;
-      color: #333;
-    }
+      color: #444;
+     }
     h1 {
       text-align: center;
-      color: #d63384;
+      color: #F19FB9;
+      font-family: 'Sour Gummy', cursive;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .malla {
+      display: flex;
       gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 20px;
     }
-    .semester {
-      background-color: #ffe6f0;
-      border: 2px solid #ffb6c1;
-      border-radius: 12px;
+    .semestre {
+      background-color: #F6DCE9;
+      border-radius: 10px;
       padding: 15px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      min-width: 250px;
+      flex-shrink: 0;
     }
-    .semester h2 {
-      color: #c2185b;
-      font-size: 18px;
-      border-bottom: 1px solid #ffb6c1;
-      padding-bottom: 5px;
+    .semestre h2 {
+      font-size: 1.2em;
+      color: #F19FB9;
+      margin-bottom: 10px;
+      font-family: 'Sour Gummy', cursive;
     }
     .course {
-      margin: 10px 0;
+      background-color: #EDCFD3;
+      margin: 5px 0;
       padding: 8px;
       border-radius: 8px;
-      background-color: #fff;
-      border: 1px solid #f8bbd0;
       cursor: pointer;
-      transition: background-color 0.3s;
       position: relative;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
     .course.approved {
-      background-color: #f48fb1;
+      background-color: #F19FB9;
       color: white;
       text-decoration: line-through;
     }
     .course.locked {
-      background-color: #fce4ec;
-      color: #aaa;
-      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
     }
     .course:hover:not(.locked):not(.approved) {
       background-color: #fddde6;
     }
     .tooltip {
+      visibility: hidden;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      padding: 5px;
+      border-radius: 4px;
       position: absolute;
-      bottom: 100%;
-      left: 0;
-      background-color: #d63384;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: pre-wrap;
-      display: none;
-      z-index: 2;
+      z-index: 1;
+      top: -5px;
+      left: 105%;
+      width: 150px;
+      font-size: 0.8em;
     }
     .course.locked:hover .tooltip {
       display: block;
@@ -96,10 +99,10 @@
 <body>
   <h1>Malla Curricular - Pedagogía en Inglés</h1>
   <div style="text-align: center">
-    <button class="reset" onclick="resetProgress()">Reiniciar Progreso</button>
+    <button class="reset" onclick="resetProgress()">Click if u are wrong</button>
   </div>
   <div id="malla" class="grid"></div>
-  <div class="footer">Hecho con cariño 💖</div>
+  <div class="footer">The roots of education are bitter, but the fruit is sweet. </div>
   <script>
     const malla = [
       {
