@@ -102,6 +102,373 @@
   <div class="footer">Hecho con cariño 💖</div>
   <script>
     const malla = [
+      {
+        nombre: "Primer Semestre",
+        ramos: [
+          { nombre: "Política Educativa" },
+          { nombre: "Fundamentos sociológicos de la educación" },
+          { nombre: "Introducción a la fonética" },
+          { nombre: "Alfabetización Académica en Español (AFI)" },
+          { nombre: "Estudios Culturales I" },
+          { nombre: "Habilidades Comunicativas en Inglés I" },
+          { nombre: "Expresión Teatral y Artística para el Inglés (AFI)" }
+        ]
+      },
+      {
+        nombre: "Segundo Semestre",
+        ramos: [
+          {
+            nombre: "Práctica de intervención I",
+            requiere: ["Política Educativa", "Fundamentos sociológicos de la educación", "Habilidades Comunicativas en Inglés I"],
+            permiteUnoPendiente: true
+          },
+          { nombre: "Currículum" },
+          { nombre: "Psicología para el Aprendizaje" },
+          { nombre: "Lingüística General I" },
+          {
+            nombre: "Habilidades Comunicativas en Inglés II",
+            requiere: ["Habilidades Comunicativas en Inglés I"]
+          },
+          {
+            nombre: "Estudios Culturales II",
+            requiere: ["Estudios Culturales I"]
+          },
+          { nombre: "Fundamentos de la Enseñanza del Idioma Inglés" }
+        ]
+      },
+      {
+        nombre: "Tercer Semestre",
+        ramos: [
+          { nombre: "Investigación Educativa" },
+          { nombre: "Estrategias Metodológicas y Evaluativas I en Educación Básica" },
+          {
+            nombre: "Habilidades Comunicativas en Inglés III (A2)",
+            requiere: ["Habilidades Comunicativas en Inglés II"]
+          },
+          {
+            nombre: "Fonética y Fonología",
+            requiere: ["Introducción a la fonética"]
+          },
+          {
+            nombre: "Psicología para el Aprendizaje del Inglés",
+            requiere: ["Psicología para el Aprendizaje"]
+          },
+          { nombre: "Electivo Formación Integral (EFI)" }
+        ]
+      },
+      {
+        nombre: "Cuarto Semestre",
+        ramos: [
+          {
+            nombre: "Práctica de Intervención II",
+            requiere: ["Práctica de intervención I"]
+          },
+          { nombre: "Educación para la Democracia" },
+          {
+            nombre: "Estrategias Metodológicas y evaluativas II en educación media",
+            requiere: ["Estrategias Metodológicas y Evaluativas I en Educación Básica"]
+          },
+          { nombre: "Literatura Inglesa Infantil" },
+          {
+            nombre: "Lingüística General II",
+            requiere: ["Lingüística General I"]
+          },
+          {
+            nombre: "Habilidades Comunicativas en inglés IV",
+            requiere: ["Habilidades Comunicativas en Inglés III (A2)"]
+          }
+        ]
+      },
+      {
+        nombre: "Quinto Semestre",
+        ramos: [
+          { nombre: "Integración Curricular de TIC" },
+          { nombre: "Taller de Orientación" },
+          {
+            nombre: "Estrategias Metodológicas y evaluativas III",
+            requiere: ["Estrategias Metodológicas y evaluativas II en educación media"]
+          },
+          {
+            nombre: "Evaluación de Desarrollo de Competencias (HITO I)",
+            requiere: [
+              "Política Educativa",
+              "Fundamentos sociológicos de la educación",
+              "Práctica de intervención I",
+              "Currículum",
+              "Psicología para el Aprendizaje",
+              "Investigación Educativa",
+              "Estrategias Metodológicas y Evaluativas I en Educación Básica",
+              "Práctica de Intervención II",
+              "Estrategias Metodológicas y evaluativas II en educación media"
+            ]
+          },
+          {
+            nombre: "Literatura inglesa juvenil",
+            requiere: ["Literatura Inglesa Infantil"]
+          },
+          {
+            nombre: "Habilidades Comunicativas en inglés V (B1)",
+            requiere: ["Habilidades Comunicativas en inglés IV"]
+          },
+          { nombre: "Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica" }
+        ]
+      },
+      {
+        nombre: "Sexto Semestre",
+        ramos: [
+          {
+            nombre: "Práctica de intervención III en Educación básica",
+            requiere: ["Práctica de Intervención II"]
+          },
+          {
+            nombre: "Habilidades Comunicativas en inglés VI",
+            requiere: ["Habilidades Comunicativas en inglés V (B1)"]
+          },
+          {
+            nombre: "Gramática comparada",
+            requiere: ["Lingüística General II"]
+          },
+          { nombre: "Didáctica para la enseñanza del inglés en Educación Básica" },
+          { nombre: "Electivo de Formación Integral (EFI)" }
+        ]
+      },
+      {
+        nombre: "Séptimo Semestre",
+        ramos: [
+          {
+            nombre: "Implementación de Estrategias Didácticas y de evaluación II en Educación Media",
+            requiere: ["Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica"]
+          },
+          { nombre: "Seminario de Profundización I" },
+          { nombre: "Seminario de Profundización II" },
+          {
+            nombre: "Habilidades Comunicativas en inglés VII (B2)",
+            requiere: ["Habilidades Comunicativas en inglés VI"]
+          },
+          { nombre: "Inglés Académico" },
+          {
+            nombre: "Didáctica para la Enseñanza del inglés en Educación Media",
+            requiere: ["Didáctica para la enseñanza del inglés en Educación Básica"]
+          },
+          {
+            nombre: "Lingüística Aplicada a la Enseñanza del Idioma Inglés",
+            requiere: ["Gramática comparada"]
+          }
+        ]
+      },
+      {
+        nombre: "Octavo Semestre",
+        ramos: [
+          {
+            nombre: "Práctica de Intervención IV en Educación Media",
+            requiere: ["Práctica de intervención III en Educación básica"]
+          },
+          {
+            nombre: "Implementación de Estrategias Didácticas y de Evaluación III",
+            requiere: ["Implementación de Estrategias Didácticas y de evaluación II en Educación Media"]
+          },
+          {
+            nombre: "Habilidades Comunicativas en inglés VIII",
+            requiere: ["Habilidades Comunicativas en inglés VII (B2)"]
+          },
+          {
+            nombre: "Evaluación de Desarrollo de Competencias (HITO II)",
+            requiere: [
+              "Educación para la Democracia",
+              "Implementación de Estrategias Didácticas y de Evaluación I en Educación Básica",
+              "Práctica de intervención III en Educación básica",
+              "Implementación de Estrategias Didácticas y de evaluación II en Educación Media"
+            ]
+          }
+        ]
+      },
+      {
+        nombre: "Noveno Semestre",
+        ramos: [
+          {
+            nombre: "Práctica Profesional en Educación Básica",
+            requiere: ["Evaluación de Desarrollo de Competencias (HITO II)"]
+          },
+          {
+            nombre: "Habilidades Comunicativas en Inglés IX (C1)",
+            requiere: ["Habilidades Comunicativas en inglés VIII"]
+          }
+        ]
+      },
+      {
+        nombre: "Décimo Semestre",
+        ramos: [
+          {
+            nombre: "Práctica profesional en Educación Media",
+            requiere: ["Práctica Profesional en Educación Básica"]
+          },
+          {
+            nombre: "Tesina",
+            requiere: ["Práctica Profesional en Educación Básica"]
+          }
+        ]
+      }
+    ];
+
+    const estado = JSON.parse(localStorage.getItem("mallaEstado") || '{}');
+
+    function guardarEstado() {
+      localStorage.setItem("mallaEstado", JSON.stringify(estado));
+    }
+
+    function resetProgress() {
+      localStorage.removeItem("mallaEstado");
+      location.reload();
+    }
+
+    function renderMalla() {
+      const container = document.getElementById("malla");
+      container.innerHTML = "";
+      malla.forEach((semestre, idx) => {
+        const col = document.createElement("div");
+        col.className = "semester";
+        col.innerHTML = `<h2>${semestre.nombre}</h2>`;
+
+        semestre.ramos.forEach((ramo) => {
+          const div = document.createElement("div");
+          div.className = "course";
+          div.textContent = ramo.nombre;
+          div.dataset.key = ramo.nombre;
+
+          const aprobado = estado[ramo.nombre];
+          const requisitos = ramo.requiere || [];
+          const maxUnoPendiente = ramo.permiteUnoPendiente;
+
+          let puedeAprobar = true;
+          let requisitosFaltantes = [];
+
+          if (requisitos.length > 0) {
+            const aprobados = requisitos.filter((r) => estado[r]);
+            const pendientes = requisitos.filter((r) => !estado[r]);
+            if (maxUnoPendiente) {
+              puedeAprobar = pendientes.length <= 1;
+              if (!puedeAprobar) requisitosFaltantes = pendientes;
+            } else {
+              puedeAprobar = pendientes.length === 0;
+              requisitosFaltantes = pendientes;
+            }
+          }
+
+          if (aprobado) {
+            div.classList.add("approved");
+          } else if (!puedeAprobar) {
+            div.classList.add("locked");
+            const tooltip = document.createElement("div");
+            tooltip.className = "tooltip";
+            tooltip.textContent =
+              "Falta aprobar:\n" + requisitosFaltantes.join("\n");
+            div.appendChild(tooltip);
+          }
+
+          div.addEventListener("click", () => {
+            if (div.classList.contains("locked")) return;
+            div.classList.toggle("approved");
+            estado[ramo.nombre] = div.classList.contains("approved");
+            guardarEstado();
+            renderMalla();
+          });
+
+          col.appendChild(div);
+        });
+
+        container.appendChild(col);
+      });
+    }
+
+    renderMalla();
+  </script>
+</body>
+</html>
+
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .semester {
+      background-color: #ffe6f0;
+      border: 2px solid #ffb6c1;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .semester h2 {
+      color: #c2185b;
+      font-size: 18px;
+      border-bottom: 1px solid #ffb6c1;
+      padding-bottom: 5px;
+    }
+    .course {
+      margin: 10px 0;
+      padding: 8px;
+      border-radius: 8px;
+      background-color: #fff;
+      border: 1px solid #f8bbd0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      position: relative;
+    }
+    .course.approved {
+      background-color: #f48fb1;
+      color: white;
+      text-decoration: line-through;
+    }
+    .course.locked {
+      background-color: #fce4ec;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    .course:hover:not(.locked):not(.approved) {
+      background-color: #fddde6;
+    }
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background-color: #d63384;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: pre-wrap;
+      display: none;
+      z-index: 2;
+    }
+    .course.locked:hover .tooltip {
+      display: block;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+    button.reset {
+      background-color: #f06292;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    button.reset:hover {
+      background-color: #ec407a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Pedagogía en Inglés</h1>
+  <div style="text-align: center">
+    <button class="reset" onclick="resetProgress()">Reiniciar Progreso</button>
+  </div>
+  <div id="malla" class="grid"></div>
+  <div class="footer">Hecho con cariño 💖</div>
+  <script>
+    const malla = [
       // Aquí ya están todos los semestres y ramos con requisitos agregados desde la versión anterior
       // (omitido en este bloque por espacio, pero ya fue insertado en la última actualización)
     ];
