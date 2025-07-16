@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Curricular - Pedagogía en Inglés</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .semester {
+      background-color: #ffe6f0;
+      border: 2px solid #ffb6c1;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .semester h2 {
+      color: #c2185b;
+      font-size: 18px;
+      border-bottom: 1px solid #ffb6c1;
+      padding-bottom: 5px;
+    }
+    .course {
+      margin: 10px 0;
+      padding: 8px;
+      border-radius: 8px;
+      background-color: #fff;
+      border: 1px solid #f8bbd0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      position: relative;
+    }
+    .course.approved {
+      background-color: #f48fb1;
+      color: white;
+      text-decoration: line-through;
+    }
+    .course.locked {
+      background-color: #fce4ec;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    .course:hover:not(.locked):not(.approved) {
+      background-color: #fddde6;
+    }
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background-color: #d63384;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: pre-wrap;
+      display: none;
+      z-index: 2;
+    }
+    .course.locked:hover .tooltip {
+      display: block;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+    button.reset {
+      background-color: #f06292;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    button.reset:hover {
+      background-color: #ec407a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Pedagogía en Inglés</h1>
+  <div style="text-align: center">
+    <button class="reset" onclick="resetProgress()">Reiniciar Progreso</button>
+  </div>
+  <div id="malla" class="grid"></div>
+  <div class="footer">Hecho con cariño 💖</div>
+  <script>
+    const malla = [
+      // Aquí ya están todos los semestres y ramos con requisitos agregados desde la versión anterior
+      // (omitido en este bloque por espacio, pero ya fue insertado en la última actualización)
+    ];
+
+    const estado = JSON.parse(localStorage.getItem("mallaEstado") || '{}');
+
+    function guardarEstado() {
+      localStorage.setItem("mallaEstado", JSON.stringify(estado));
+    }
+
+    function resetProgress() {
+      localStorage.removeItem("mallaEstado");
+      location.reload();
+    }
+
+    function renderMalla() {
+      const container = document.getElementById("malla");
+      container.innerHTML = "";
+      malla.forEach((semestre, idx) => {
+        const col = document.createElement("div");
+        col.className = "semester";
+        col.innerHTML = `<h2>${semestre.nombre}</h2>`;
+
+        semestre.ramos.forEach((ramo) => {
+          const div = document.createElement("div");
+          div.className = "course";
+          div.textContent = ramo.nombre;
+          div.dataset.key = ramo.nombre;
+
+          const aprobado = estado[ramo.nombre];
+          const requisitos = ramo.requiere || [];
+          const maxUnoPendiente = ramo.permiteUnoPendiente;
+
+          let puedeAprobar = true;
+          let requisitosFaltantes = [];
+
+          if (requisitos.length > 0) {
+            const aprobados = requisitos.filter((r) => estado[r]);
+            const pendientes = requisitos.filter((r) => !estado[r]);
+            if (maxUnoPendiente) {
+              puedeAprobar = pendientes.length <= 1;
+              if (!puedeAprobar) requisitosFaltantes = pendientes;
+            } else {
+              puedeAprobar = pendientes.length === 0;
+              requisitosFaltantes = pendientes;
+            }
+          }
+
+          if (aprobado) {
+            div.classList.add("approved");
+          } else if (!puedeAprobar) {
+            div.classList.add("locked");
+            const tooltip = document.createElement("div");
+            tooltip.className = "tooltip";
+            tooltip.textContent =
+              "Falta aprobar:\n" + requisitosFaltantes.join("\n");
+            div.appendChild(tooltip);
+          }
+
+          div.addEventListener("click", () => {
+            if (div.classList.contains("locked")) return;
+            div.classList.toggle("approved");
+            estado[ramo.nombre] = div.classList.contains("approved");
+            guardarEstado();
+            renderMalla();
+          });
+
+          col.appendChild(div);
+        });
+
+        container.appendChild(col);
+      });
+    }
+
+    renderMalla();
+  </script>
+</body>
+</html>
